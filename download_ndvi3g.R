@@ -5,7 +5,7 @@ library(doParallel)
 
 registerDoParallel(3)
 
-Sys.setenv(AWS_CONFIG_FILE='C:/Users/azvol/.aws/config')
+#Sys.setenv(AWS_CONFIG_FILE='C:/Users/azvol/.aws/config')
 
 # Function to generate a unique temporary directory name separate from the R 
 # session temp folder.
@@ -46,6 +46,7 @@ ndvi <- foreach(ndvi_file=iter(files, by="row"), .combine=c,
     # Round to range from -255 - 255 for size.
     # Note initial data was scaled by 10000.
     r <- round((r / 10000) * 127)
+    r
 }
 
 # TODO: Fix this to combine list of spatial polygons
